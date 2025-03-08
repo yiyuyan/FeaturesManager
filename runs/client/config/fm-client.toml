@@ -1,0 +1,4 @@
+list_background_color = "#D100A3FF"
+list_button_hover_color = "#8000C7FF"
+feature_background_enabled_color = "#D100B7FF"
+feature_background_disabled_color = "#D100A3FF"

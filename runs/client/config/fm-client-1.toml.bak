@@ -1,0 +1,6 @@
+list_background_color = "#D100A3FF"
+list_button_hover_color = "#8000C7FF"
+feature_background_color = "#B300A3FF"
+feature_background_enabled_color = "#99007ACC"
+feature_background_disabled_color = "#80333333"
+feature_background_hover_color = "#CC00C7FF"
