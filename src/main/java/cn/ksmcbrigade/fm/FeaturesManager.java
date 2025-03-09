@@ -111,11 +111,18 @@ public class FeaturesManager
             if(jsonElement instanceof JsonObject object){
                 String name = object.get("name").getAsString();
                 String category = object.get("category").getAsString();
+                int key = -2;
+                try {
+                    key = object.get("key").getAsInt();
+                } catch (Exception e) {
+                    //nothing now
+                }
                 boolean enabled = object.get("enabled").getAsBoolean();
 
                 Feature feature = categoriesManager.getFeature(name);
                 if(feature!=null){
                     feature.setEnabled(enabled);
+                    if(key!=-2) feature.setKey(key);
                     LOGGER.info("Set a feature at {} category to {}.",category,enabled);
                 }
             }
@@ -129,6 +136,7 @@ public class FeaturesManager
             object.addProperty("name",allFeature.name);
             object.addProperty("category",allFeature.type.name);
             object.addProperty("enabled",allFeature.enabled);
+            object.addProperty("key",allFeature.key);
             array.add(object);
         }
         FileUtils.writeStringToFile(features, array.toString());
