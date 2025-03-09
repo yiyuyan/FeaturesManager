@@ -4,7 +4,6 @@ import cn.ksmcbrigade.fm.enums.Category;
 import cn.ksmcbrigade.fm.feature.Feature;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class CategoriesManager {
@@ -68,12 +67,13 @@ public class CategoriesManager {
         this.categories.get(category).add(feature);
     }
 
-    public void addNew(Category category){
+    public Category addNew(Category category){
         this.categories.put(category,new ArrayList<>());
+        return category;
     }
 
-    public void addCustomNew(String categoryName) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        this.addNew(Category.class.getDeclaredConstructor(String.class).newInstance(categoryName));
+    public Category addCustomNew(String categoryName) {
+        return this.addNew(new Category(categoryName));
     }
 
     @Nullable
